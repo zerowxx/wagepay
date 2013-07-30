@@ -1,0 +1,91 @@
+<#include "../layout.html"/>
+<@layout title="文件上传">
+<script language="javascript">
+<!--
+function getPath(obj)
+{
+    var pos = obj.value.lastIndexOf("/")*1;
+    return obj.value.substring(pos+1);
+}
+//兼容chrome，IE10，其他未测试
+function getFileName(path){
+	var pos1 = path.lastIndexOf('/');
+	var pos2 = path.lastIndexOf('\\');
+	var pos  = Math.max(pos1, pos2);
+	if( pos<0 )
+		return path;
+	else
+		return path.substring(pos+1);
+}
+
+function showInfo(obj)
+{
+    var path = getPath(obj);
+    var filename = getFileName(path);
+	if(filename!="data.xls")
+	{
+		//document.getElementById("filename").innerText = filename;
+		alert("请上传模版文件(data.xls)！");
+		//document.getElementById("fileerror").innerText = "请上传模版文件！";
+	}
+	
+}
+
+-->
+</script>
+<div class="span12">
+	<div class="row"> 	
+		<form action="/upload" class="well" method="POST" enctype="multipart/form-data">
+			<fieldset>
+				<legend>请上传课时数据表</legend>
+				
+				<div class="control-group">
+					<label class="control-label" for="year">请选择当前学期：</label>
+					<div class="controls">
+					  <select id="year" name="year">
+						<option>请选择</option>
+						<option value="2012-2013-2">2012-2013-2</option>
+						<option value="2013-2014-1">2013-2014-1</option>
+						<option value="2013-2014-2">2013-2014-2</option>
+						<option value="2014-2015-1">2014-2015-1</option>
+						<option value="2014-2015-2">2014-2015-2</option>
+						<option value="2015-2016-1">2015-2016-1</option>
+						<option value="2015-2016-2">2015-2016-2</option>
+						<option value="2016-2017-1">2016-2017-1</option>
+						<option value="2016-2017-2">2016-2017-2</option>
+						<option value="2017-2018-1">2017-2018-1</option>
+						<option value="2017-2018-2">2017-2018-2</option>
+						<option value="2018-2019-1">2018-2019-1</option>
+						<option value="2018-2019-2">2018-2019-2</option>
+					  </select>
+					</div>
+				</div>
+				
+				<#if FileError??>
+				<div class="control-group">
+					<label class="control-label" for="fileInput">请选择上传文件：</label>
+					<div class="controls">
+						<input class="input-file" name="file" onChange="showInfo(this);" id="fileInput" type="file" >
+						<span class="help-inline">${FileError!}<div id="fileerror"></div></span> 
+						<p class="help-block" style="color:red">文件名必须为data.xls</p>
+					</div>
+				</div>
+				<#else>
+				<div class="control-group">
+					<label class="control-label" for="fileInput">请选择上传文件：</label>
+					<div class="controls">
+						<input class="input-file" name="file" onChange="showInfo(this);" id="fileInput" type="file" >
+						<span class="help-inline"><div id="fileerror"></div></span> 
+						<p class="help-block" style="color:red">文件名必须为data.xls</p>
+					</div>
+				</div>
+				</#if>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-success  span2">开始上传</button>
+				</div>
+			</fieldset>
+		</form>
+		<div id="filename" style="font-size:12px; "></div><br>
+    </div>
+</div>
+</@layout>

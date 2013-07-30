@@ -1,0 +1,20 @@
+<div class="alert alert-error">
+	<!-----编程语言----->
+	<i class="icon-tag" style="margin-left:2px"></i><strong>编程语言</strong>	</br>
+	<a class="tag1" href="/pro/sort/C">C</a>
+	<a class="tag1" href="/pro/sort/C++">C++</a>
+	<a class="tag1" href="/pro/sort/C%23">C#</a>
+	<a class="tag1" href="/pro/sort/Java">Java</a></br>
+    <!----------------->
+    <!-----WEB编程-----> 
+    <i class="icon-tag" style="margin-left:2px"></i><strong>WEB编程</strong>	</br>    
+    <a class="tag1" href="/pro/sort/JSP">JSP</a>
+    <a class="tag1" href="/pro/sort/ASP">ASP</a></br>
+    <!--------------->
+    <!-----数据库-----> 
+    <i class="icon-tag" style="margin-left:2px"></i><strong>数据库</strong>	</br>
+    <a class="tag1" href="/pro/sort/SQLServer">SQLServer</a>
+    <a class="tag1" href="/pro/sort/MySql">MySql</a></br>
+    <!--------------->
+    	
+</div>

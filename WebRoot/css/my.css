@@ -1,0 +1,11 @@
+.tag1{
+	margin-left:10px;
+	line-height:40px;
+	color:#000;
+	font-size:17px;	
+}
+
+.box {
+    border-radius: 7px;
+    overflow: hidden !important;   
+}

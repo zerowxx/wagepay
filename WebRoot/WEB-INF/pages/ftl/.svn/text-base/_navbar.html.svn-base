@@ -1,0 +1,51 @@
+<script type="text/javascript"> 
+    $('.dropdown-toggle').dropdown(); 
+</script> 
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+        <div class="nav-collapse collapse">
+          <#if (session.UserName)??>
+		  <p class="navbar-text pull-right" ><a href="/exit" class="navbar-link" >退出<i class="icon-off icon-white" style="margin-left:2px"></i></a></p> 
+		  <div class="navbar-text pull-right"> 
+		    <ul class="nav nav-pills">  
+			<li class="dropdown" id="menutest1"> 
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#menutest1"> 
+		    	<i class="icon-user icon-white" style="margin-left:2px"></i>
+		    	${session.UserName}
+		      	<b class="caret"></b> 
+		    </a>		
+			<#if (session.Expert)== "false">
+		    <ul class="dropdown-menu"> 
+		      <li><a href="/user/infocenter">个人资料</a></li> 
+		      <li><a href="/user/publishedp">已发布问题</a></li> 
+		      <li><a href="/user/closedp">已关闭问题</a></li> 
+		    </ul> 
+			<#else>
+				 <ul class="dropdown-menu"> 
+				  <li><a href="/user/infocenter">个人资料</a></li> 
+				  <li><a href="/user/publishedp">已发布问题</a></li>
+				  <li><a href="/user/appliedpro">已申领问题</a></li> 
+				</ul> 
+			</#if>
+			</li> 
+			</ul> 
+		  </div> 
+		  <p class="navbar-text pull-right">欢迎您</p>
+		  <#else>
+          <p class="navbar-text pull-right" style="margin-left:6px"> |<a href="/regpg" class="navbar-link" style="margin-left:6px">免费注册</a></p>
+          <p class="navbar-text pull-right"><a href="/loginpg" class="navbar-link">登录 </a></p>
+		  </#if>
+          <ul class="nav">
+            <li><a href="/" style="font-size:15px"><i class="icon-home icon-white" style="margin-right:2px"></i>IT Witkey</a></li>            
+			<li><a href="/pro/helppg"><i class="icon-question-sign icon-white" style="margin-right:2px"></i>问题求助</a></li>
+            <li><a href="/pro/all"><i class="icon-eye-open icon-white" style="margin-right:2px"></i>查看所有</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+ 

@@ -1,0 +1,59 @@
+.f2 span {
+	background: red;
+}
+
+#page{
+	font-family: Verdana,'Microsoft YaHei',Tahoma, Arial, Sans-Serif;
+}
+
+#page fieldset,#page fieldset legend {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#page fieldset legend {
+	padding: 3px 20px;
+	color: white;
+	background: #3393c9;
+	font-size: 1.4em;
+}
+
+#page fieldset {
+	margin-top: 10px;
+	border: solid 1px #ddd;
+}
+
+#page .api {
+	background: rgb(252, 252, 252);
+}
+
+#page .api li {
+	border-bottom: 1px dashed #ddd;
+	padding: 5px 3px;
+	margin: 0;
+	line-height: 1.8em;
+	list-style: circle;
+	margin: 5px 0;
+}
+
+
+#page .api .func {
+	color: green;
+	list-style: none;
+	font-weight: bold;
+}
+
+#page strong {
+	color: green;
+	margin-right: 5px;
+}
+
+#page .api strong {
+	width: 10em;
+	display: inline-block;
+}
+
+#page .api li:hover {
+	background: whiteSmoke;
+}

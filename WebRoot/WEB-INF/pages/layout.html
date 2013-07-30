@@ -1,0 +1,52 @@
+<#macro layout  title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>${title}</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/my.css" rel="stylesheet">
+<link href="/css/unicorn.main.css" rel="stylesheet">
+<link href="/css/demo.css" rel="stylesheet">
+<link href="/css/itniwo.css" rel="stylesheet">
+<meta name="viewport" content="width-device-wdith,initia-scale=1.0"/>
+<style type="text/css">
+body {
+	padding-top: 80px;
+	padding-bottom: 40px;
+	font-family: Candara, arial,微软雅黑,sans-serif;
+}
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+</style>
+
+<!--[if lte IE 6]>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-ie6.css">
+  <![endif]-->
+  <!--[if lte IE 7]>
+  <link rel="stylesheet" type="text/css" href="/css/ie.css">
+  <![endif]-->
+  
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<div class="container">
+  <!-- 导入导航栏--->
+  <#include "ftl/_navbar.html"/>
+  <!-- 导入导航栏--->
+  <div class="row">
+    <#nested>
+  </div>
+  <div class="row" align="center">
+  <hr>
+  <footer><#include "ftl/_footer.html"/></footer>
+  </div>
+</div>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-ie.js"></script>
+<script  type="text/javascript" src="/js/bootstrap.min.js"></script> 
+</body>
+</html>
+</#macro>

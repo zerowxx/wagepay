@@ -1,0 +1,67 @@
+<#include "layout.html"/>
+<@layout title="用户登录">
+<div class="box">
+	<div class="span11 offset1">
+	<form class="form-horizontal" action="/login" method="post">
+		<#if UserNameError??>
+			<div class="control-group error">		
+				<label class="control-label">用户名</label>
+				<div class="controls">
+					<input type="text" class="span3" name="UserName" value="${UserName!}"/>
+					<span class="help-inline">${UserNameError}</span> 
+				</div>
+			</div>
+		<#else>
+			<div class="control-group">
+				<label class="control-label">用户名</label>
+				<div class="controls">
+					<input type="text" class="span3" name="UserName" value="${UserName!}"/>
+				</div>
+			</div>
+		</#if>
+		
+		<#if PassWordError??>
+			<div class="control-group error">
+				<label class="control-label">密码</label>
+				<div class="controls">
+				<input type="password" name="Password" value="${Password!}"/>
+				<span class="help-inline">${PassWordError}</span> </div>
+			</div>   
+		<#else>
+			<div class="control-group">
+			<label class="control-label">密码</label>
+			<div class="controls">
+			  <input type="password" name="Password" value="${Password!}"/>
+			</div>
+			</div>
+		</#if>
+		
+		<div class="control-group">
+            <div class="controls">
+              <label class="radio span1 inline">
+                <input type="radio" name="User" id="ordinaryuser" value="ordinaryuser" checked>
+		普通用户
+              </label>
+              <label class="radio span1 inline">
+                <input type="radio" name="User" id="adminuser" value="adminuser">
+		管理员
+              </label>
+            </div>
+          </div>
+
+		<#if Error??>
+			<div class="control-group error">
+				<div class="controls">				
+					<span class="help-inline">${Error}</span>
+				</div>
+			</div>
+		</#if>
+	  <div class="control-group">
+		<div class="controls">
+		  <button type="submit" class="btn btn-success span2">登 录</button>
+		</div>
+	  </div>
+	</form>
+	</div>
+</div>
+</@layout>

@@ -1,0 +1,73 @@
+<!----- 分页----->
+<#macro pagination url curPage=1 totalPage=1>
+	<#assign shownum=5/>
+	<#if (curPage<shownum)>
+		<#assign startIndex = ((curPage/shownum)?int)*shownum+1 />
+		<#assign endIndex = startIndex+shownum-1 />
+	<#else>
+		<#assign startIndex = ((curPage/shownum)?int)*shownum />
+		<#assign endIndex = startIndex+shownum />
+	</#if>
+		
+	<#if totalPage == 0>
+		<#assign _totalPage = 1 />
+	<#else>
+		<#assign _totalPage = totalPage />
+	</#if>
+	
+	<#if (endIndex > _totalPage)>
+		<#assign endIndex = _totalPage/>
+	</#if>
+				
+	<ul>
+		<#if curPage == 1>
+			<li class="disabled"><a><<</a></li>
+			
+		<#else>
+			<li><a href="/${url}${curPage-1}"><<</a></li>
+			
+		</#if>
+		<#if (_totalPage <= shownum)>
+			<#list 1.._totalPage as _pageNum>
+				<#if _pageNum == curPage>
+					<li class="disabled"><a>${_pageNum}</a></li>
+				<#else>
+					<li><a href="/${url}${_pageNum}">${_pageNum}</a></li>
+				</#if>
+			</#list>
+		
+		<#elseif (endIndex > shownum)>
+			<li><a href="/${url}/1">1</a></li>
+			<li><a>.....</a></li>
+			<#list (startIndex-1)..endIndex as _pageNum>															
+				<#if _pageNum == curPage>
+					<li class="disabled"><a>${_pageNum}</a></li>
+				<#else>
+					<li><a href="/${url}${_pageNum}">${_pageNum}</a></li>
+				</#if>
+				
+			</#list>
+			<#if (endIndex < _totalPage-1)>
+				<li><a>.....</a></li>
+				<li><a href="/${url}${_totalPage}">${_totalPage}</a></li>
+			<#elseif (endIndex != _totalPage)>
+				<li><a href="/${url}${_totalPage}">${_totalPage}</a></li>
+			</#if>
+		<#elseif (endIndex <= shownum)>
+			<#list startIndex..endIndex as _pageNum>
+				<#if _pageNum == curPage>
+					<li class="disabled"><a>${_pageNum}</a></li>
+				<#else>
+					<li><a href="/${url}${_pageNum}">${_pageNum}</a></li>
+				</#if>
+			</#list>
+		</#if>
+
+		<#if curPage == _totalPage>			
+			<li class="disabled"><a>>></a></li>
+		<#else>
+			<li><a href="/${url}${curPage+1}">>></a></li>
+		</#if>
+	</ul>	
+</#macro>
+<!----- 分页----->

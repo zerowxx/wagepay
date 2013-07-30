@@ -1,0 +1,11 @@
+<#macro alert alerttype="">	
+	<#if (alerttype="error")>
+		<div class="alert alert-error">
+	<#elseif (alerttype="success")>
+		<div class="alert alert-success">
+	<#else>
+		<div class="alert">
+	</#if>
+			<strong><#nested></strong>
+		</div>
+</#macro>

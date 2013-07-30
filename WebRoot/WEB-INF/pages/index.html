@@ -1,0 +1,152 @@
+<#include "layout.html"/>
+<@layout title="主页">
+<div class="span8">
+    <div class="row"> <i class="icon-th-list" style="margin-left:2px"></i><strong style="margin-left:2px">本学期课时汇总</strong>
+        <form id="total_classhour" class="" action="/confirm" method="post">
+			<input type="hidden" name="teachingid" value="${session.TeachingId}"/>
+			<table class="table table-bordered table-hover">
+				<tbody>
+					<#if (classhour)??>
+					<tr>
+						<td width="20%">本科总课时</td>
+						<td width="20%">研究生总课时</td>
+						<td width="20%">成教总课时</td>
+						<td width="20%">毕设总课时</td>
+						<td width="20%">合计总课时</td>
+					</tr>
+					<tr>
+						<td>${classhour.本科总课时!}</td>
+						<td>${classhour.研究生总课时!}</td>
+						<td>${classhour.成教总课时!}</td>
+						<td>${classhour.毕设总课时!}</td>
+						<td>${classhour.合计总课时!}</td>             
+					</tr>
+					<#else>
+					<tr>
+						<td>暂无信息！</td>
+					</tr>
+					</#if>
+				</tbody>
+			</table>
+			<!--确认按钮-->
+			<#if (classhour)??>
+			<#if flag==false>
+			<div class="span2 pull-right">
+				<button type="submit" class="btn btn-success btn-block">确认</button>
+			</div>
+			<#else>
+			<div class="alert alert-success pull-right">
+			<a class="close" data-dismiss="alert">×</a>
+				已确认
+			</div>
+			</#if>
+			</#if>
+		</form>
+    </div
+	<#if (classhour)??>
+	<!--判断该课时是否为0-->
+	<div class="row">
+		<hr>
+		<h4>详细课时信息如下：</h4>
+	</div>
+	<#if classhour.本科总课时 != 0>
+    <div class="row"> <i class="icon-info-sign" style="margin-left:2px"></i><strong style="margin-left:2px">本科课时信息</strong>
+		<div class="pull-right"><i class="icon-question-sign" style="margin-left:2px"></i><a href="/classhour/undergraduate">查看详细</a></div>
+		<!--本科课时-->
+        <table class="table table-bordered table-hover">
+			<tbody>
+				<tr>
+					<td width="20%">课程名称</td>
+					<td width="20%">总课时</td>
+					<td width="40%">备注</td>
+					<td width="20%">最终总课时</td>
+				</tr>
+				<#list undergraduate_classhourlist as ucl>
+					<tr> 
+						<td>${ucl.课程名称!}</td>
+						<td>${ucl.总课时!}</td>
+						<td>${ucl.补充说明!}</td>
+						<td>${ucl.最终总课时!}</td>
+					</tr>
+				</#list>
+			</tbody> 
+        </table>
+    </div>
+	</#if>
+	<#if classhour.研究生总课时 != 0>
+	<div class="row"> <i class="icon-info-sign" style="margin-left:2px"></i><strong style="margin-left:2px">研究生课时信息</strong>
+		<div class="pull-right"><i class="icon-question-sign" style="margin-left:2px"></i><a href="/classhour/graduate">查看详细</a></div>
+		<!--研究生课时-->
+        <table class="table table-bordered table-hover">
+			<tbody>
+				<tr>
+					<td width="20%">课程名称</td>
+					<td width="20%">总课时</td>
+					<td width="40%">备注</td>
+					<td width="20%">最终总课时</td>
+				</tr>
+				<#list graduate_classhourlist as gcl>
+					<tr> 
+						<td>${gcl.课程名称!}</td>
+						<td>${gcl.总计课时!}</td>
+						<td>${gcl.备注!}</td>
+						<td>${gcl.最终总课时!}</td>
+					</tr>
+				</#list>
+			</tbody> 
+        </table>
+    </div>
+	</#if>
+	<#if classhour.成教总课时 !=0>
+	<div class="row"> <i class="icon-info-sign" style="margin-left:2px"></i><strong style="margin-left:2px">成教课时信息</strong>
+		<div class="pull-right"><i class="icon-question-sign" style="margin-left:2px"></i><a href="/classhour/adulteducation">查看详细</a></div>
+		<!--成教课时-->
+        <table class="table table-bordered table-hover">
+			<tbody>
+				<tr>
+					<td width="20%">课程名称</td>
+					<td width="20%">班级</td>
+					<td width="40%">备注</td>
+					<td width="20%">总课时</td>
+				</tr>
+				<#list adulteducation_classhourlist as aecl>
+					<tr> 
+						<td>${aecl.课程名称!}</td>
+						<td>${aecl.班级!}</td>
+						<td>${aecl.备注!}</td>
+						<td>${aecl.总课时!}</td>
+					</tr>
+				</#list>
+			</tbody> 
+        </table>
+    </div>
+	</#if>
+	<#if classhour.毕设总课时 !=0>
+	<div class="row"> <i class="icon-info-sign" style="margin-left:2px"></i><strong style="margin-left:2px">毕设课时信息</strong>
+		<!--<div class="pull-right"><i class="icon-question-sign" style="margin-left:2px"></i><a href="#">查看详细</a></div>-->
+		<!--毕设课时-->
+        <table class="table table-bordered table-hover">
+			<tbody>
+				<tr>
+					<td width="20%">毕设课时</td>
+				</tr>
+				<#list graduationdesign_classhourlist as gdcl>
+					<tr> 
+						<td>${gdcl.毕设课时!}</td>
+					</tr>
+				</#list>
+			</tbody> 
+        </table>
+    </div>	
+	</#if>
+	
+	</#if>
+	
+	<!--测试信息-->
+	<a href="/uploadpg">上传页面</a>
+	<a href="/test">测试数据库连接</a>
+</div>
+    <div class="span3 offset1">
+		<i class="icon-volume-up"></i><strong style="margin-left:2px">公告</strong> <#include "ftl/_notice.html"/> 
+	</div>
+</@layout>

@@ -1,0 +1,9 @@
+﻿<#macro sub title len=25 z="">
+<#compress>
+		<#if (title?length>len)>
+			${title[0..len-1]}${z}
+		<#else>
+			${title}
+		</#if>
+</#compress>
+</#macro>
