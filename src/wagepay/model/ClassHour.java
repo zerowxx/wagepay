@@ -12,6 +12,9 @@ public class ClassHour extends Model<ClassHour> {
 	private String CLASSHOUR="select 教学工号,本科总课时,研究生总课时,成教总课时,毕设总课时,合计总课时  from classhour_summarize_s " +
 			"where 教学工号=? and 学年 in (select ParameterValue from Parameter where ParameterName='Academic_Year')";
 	
+	private String CONFIRMEDNUMBER="SELECT count(*) as Total,sum(确认标记) as Confirmed FROM classhour_summarize_s";
+	//"where 学年  in (select ParameterValue from Parameter where ParameterName='Academic_Year')";
+	
 	
 	public static final ClassHour dao = new ClassHour();
 	
@@ -44,6 +47,11 @@ public class ClassHour extends Model<ClassHour> {
 	 */
 	public boolean getConfirmFlag(int teachingId){
 		return Db.queryBoolean("SELECT 确认标记   FROM classhour_summarize_s WHERE 教学工号=? ", teachingId);
+	}
+	
+	public List<Record> getConfirmedNumber(){
+		//return (Record) Db.query(CONFIRMEDNUMBER);
+		return Db.find(CONFIRMEDNUMBER);
 	}
 
 }

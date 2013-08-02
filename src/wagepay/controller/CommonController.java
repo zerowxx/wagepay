@@ -104,9 +104,7 @@ public class CommonController extends Controller {
 			String UserName = getPara("UserName");
 			String Password = getPara("Password");
 			String IsAdmin =getPara("User");
-			if(IsAdmin.equals("adminuser")){
-				System.out.println(IsAdmin);
-				
+			if(IsAdmin.equals("adminuser")){				
 				boolean success=Admin.dao.login(UserName, Password);
 				if(!success){
 					keepPara("UserName").setAttr("Error", "用户名或密码错误或用户类型错误！");
@@ -124,9 +122,6 @@ public class CommonController extends Controller {
 					forwardAction("/loginpg");
 				}else{
 					getRequest().getSession().setAttribute("UserName",UserName);
-					//String expert = Db.findFirst("select Expert from UserInfo where UserName =?",UserName).getBoolean("Expert").toString();
-					//System.out.println("expert:"+expert);
-					//getRequest().getSession().setAttribute("Expert",expert);
 					setAttr("altertype", "success");//类型值可以为 error success 或不设置该值
 					setAttr("alterinfo", "登录成功!").render("alerts.html");
 					getResponse().setHeader("Refresh","2;URL=/home");

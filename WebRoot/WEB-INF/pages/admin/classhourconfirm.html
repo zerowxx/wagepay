@@ -1,0 +1,29 @@
+<#include "../layout.html"/>
+<@layout title="课时确认一览">
+<div class="span8">
+    <div class="row"> <i class="icon-th-list" style="margin-left:2px"></i><strong style="margin-left:2px">课时确认情况</strong>
+		<table class="table table-bordered table-hover">
+			<tbody>
+				<#if (confirmedNumber)??>
+				<#list confirmedNumber as cn>
+				<tr>
+					<td width="20%">超课时总人数</td>
+					<td width="20%">已确认人数</td>
+					<td width="20%">未确认人数</td>
+				</tr>
+				<tr>
+					<td>${cn.Total!}</td>
+					<td>${cn.Confirmed!}</td>
+					<td>${(cn.Total-cn.Confirmed)!}</td>     
+				</tr>
+				</#list>
+				<#else>
+				<tr>
+					<td>暂无信息！</td>
+				</tr>
+				</#if>
+			</tbody>
+		</table>
+    </div>
+</div>
+</@layout>
