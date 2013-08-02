@@ -29,7 +29,7 @@ public class CommonController extends Controller {
 	public void index() {
 		String username = this.getSessionAttr("UserName");
 		if(username!=null)
-			render("index.html");
+			home();
 		else
 			render("login.html");
 	}
